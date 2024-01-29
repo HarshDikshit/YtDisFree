@@ -30,9 +30,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.core.OrderBy;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -140,10 +143,14 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+       LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+       linearLayoutManager.setReverseLayout(true);
+       linearLayoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         urlArrayList = new ArrayList<VideoList>();
         myAdapter = new MyAdapter(MainActivity.this, urlArrayList);
+
 
         recyclerView.setAdapter(myAdapter);
 
@@ -155,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void eventChangeListener() {
 
-        db.collection("url").orderBy("date", Query.Direction.DESCENDING)
+        db.collection("url").orderBy("date", Query.Direction.ASCENDING)
 
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
@@ -169,7 +176,9 @@ public class MainActivity extends AppCompatActivity {
                             if (dc.getType() == DocumentChange.Type.ADDED) {
                            VideoList modelList = dc.getDocument().toObject(VideoList.class);
                            modelList.setDocumentId(documentId);
+
                                 urlArrayList.add(modelList);
+
                             }
                          
 

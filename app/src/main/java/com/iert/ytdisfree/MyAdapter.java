@@ -75,6 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                         urlArrayList.remove(position);
                         notifyDataSetChanged();
                         progressDialog.dismiss();
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
