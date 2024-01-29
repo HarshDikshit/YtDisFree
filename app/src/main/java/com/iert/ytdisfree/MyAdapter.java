@@ -3,6 +3,7 @@ package com.iert.ytdisfree;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         View v = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
 
+
         return new MyViewHolder(v);
     }
 
@@ -57,14 +59,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-           
 
+        AlertDialog.Builder alert= new AlertDialog.Builder(context);
+        alert.setTitle("Delete");
+        alert.setMessage("Are you sure ?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
                 progressDialog.setMessage("Deleting data...");
                 progressDialog.show();
-                // int pos =position;
                 db.collection("url").document(urlArrayList.get(position).getDocumentId()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
@@ -80,8 +83,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                         Toast.makeText(context, "fail", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
+            }
+
+        });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
             }
         });
+
+        AlertDialog alertDialog= alert.create();
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                // int pos =position;
+
+                alertDialog.show();
+            }
+        });
+
+
     }
 
     @Override
