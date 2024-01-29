@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "118239647048",
+    "project_id": "yt-dis-free",
+    "storage_bucket": "yt-dis-free.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118239647048:android:cb8278332d58fb9c36cf7d",
+        "android_client_info": {
+          "package_name": "com.iert.ytdisfree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMZw_DGNFXPgayyVjFd5y4ARVfIdUy0I0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
