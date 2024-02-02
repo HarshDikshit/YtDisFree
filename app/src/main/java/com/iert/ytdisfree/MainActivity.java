@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                                     pd.dismiss();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
-                                @Override`
+                                @Overridegit
                                 public void onFailure(@NonNull Exception e) {
                                     pd.dismiss();
                                     Toast.makeText(MainActivity.this, "error ocurred", Toast.LENGTH_SHORT).show();
