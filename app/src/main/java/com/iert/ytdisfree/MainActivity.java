@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                             pd.show();
 
 
-                            SimpleDateFormat sdf =new  SimpleDateFormat("YYYY - MM - dd ' ' ss : mm : HH");
+                            SimpleDateFormat sdf =new  SimpleDateFormat("YYYY - MM - dd ' ' HH : mm : ss");
                             String current = sdf.format(new Date());
                             Map<String, Object> url = new HashMap<>();
                             url.put("url", urlEditText.getText().toString());
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                                     pd.dismiss();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
-                                @Override
+                                @Override`
                                 public void onFailure(@NonNull Exception e) {
                                     pd.dismiss();
                                     Toast.makeText(MainActivity.this, "error ocurred", Toast.LENGTH_SHORT).show();
