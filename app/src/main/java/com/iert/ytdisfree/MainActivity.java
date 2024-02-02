@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                             pd.show();
 
 
-                            SimpleDateFormat sdf =new  SimpleDateFormat("dd - MM - yyyy ' ' HH : mm : ss z");
+                            SimpleDateFormat sdf =new  SimpleDateFormat("YYYY - MM - dd ' ' ss : mm : HH");
                             String current = sdf.format(new Date());
                             Map<String, Object> url = new HashMap<>();
                             url.put("url", urlEditText.getText().toString());
